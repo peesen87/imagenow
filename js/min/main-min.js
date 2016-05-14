@@ -1,0 +1,1 @@
+jQuery(document).ready(function($){$(".slider").bxSlider({controls:!1,captions:!0}),$(".image-full").imgLiquid()});

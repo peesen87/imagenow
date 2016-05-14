@@ -1,0 +1,1025 @@
+/*------------------------------------*\
+    1. VARIABLES
+\*------------------------------------*/
+
+/* colors */
+$white: rgb(255,255,255);
+$grey-one: rgb(237,237,237);
+
+$color-imagenow: rgb(228,6,38);
+$color-knigge: rgb(154,186,204);
+$color-event: rgb(180,177,198);
+$color-personal: rgb(211,172,179);
+    
+/* fonts */
+$body-color: rgb(66,66,66);
+
+$font-title: 'Raleway', sans-serif;
+$font-body: 'Open Sans', sans-serif;
+
+/* responsive breakpoints */
+@import "responsive";
+
+/* positioning */
+@mixin vh-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+@mixin v-center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* headings */
+@mixin headings {
+    h1, h2, h3, h4, h5, h6 {
+        @content;
+    }
+}
+
+/* overlay effect */
+@mixin overlay {
+    .overlay {
+        position: absolute;
+        @include vh-center;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+        transition-delay: 0.3s;
+        z-index: 10;
+        span {
+            border: 2px solid $white;
+            display: inline-block;   
+            padding: 0.5rem 1.5rem;
+        }
+    }
+    &:hover .overlay, &:focus .overlay {opacity: 1;}
+}
+
+/*------------------------------------*\
+    0. BASIC
+\*------------------------------------*/
+html {
+    font-size: 62.5%;
+    height: 100%;
+}
+
+body {
+    color: $body-color;
+    font-size: 1.4rem;
+    font-family: $font-body;
+    font-weight: 300;
+    height: 100%;
+    line-height: 1.8;
+}
+@include s-medium {
+    font-size: 1.6rem;
+}
+
+#wrapper {
+    height: 100%;
+}
+
+
+
+
+/*------------------------------------*\
+    1. HEADER
+\*------------------------------------*/
+header {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.home header {height: 100%;}
+
+#navbar {
+    background-color: $white;
+    width: 100%;
+    z-index: 99999;
+}
+.home #navbar {position: absolute; top: 0;}
+
+#logo {
+    float: left;
+    padding: 1rem;
+    img {
+        height: 36px;
+    }
+}
+
+#mainnav {
+    display: none;
+    float: right;
+}
+
+@include m-large {
+    #mainnav {
+        font-size: 1.6rem;
+        display: inline-block;
+        ul {
+            li {
+                float: left;
+                list-style-type: none;
+                a {
+                    display: inline-block;
+                    height: 5.6rem;
+                    line-height: 3.6rem;
+                    padding: 1rem 2rem;
+                }
+            }
+        }
+    }
+}
+
+#slider {
+    color: $white;
+    height: 100%;
+    .bx-wrapper {
+        height: 100%;
+        margin: 0;
+        .bx-viewport {
+            height: 100% !important;
+            .slider {
+                height: 100%;
+                margin: 0;
+                .slide {
+                    height: 100%;
+                    position: relative;
+                    .contentwrapper {
+                        height: 100%;
+                        position: relative;
+                        .content {
+                            text-align: center;
+                            width: 90%;
+                            @include vh-center;
+                            span {
+                                display: block;
+                                text-transform: uppercase;
+                                &.title {
+                                    font-family: $font-title;
+                                    font-size: 2.6rem;
+                                    font-weight: 400;
+                                    line-height: 1.4;
+                                    margin-bottom: 1rem;
+                                }
+                                @include x-small {&.title {font-size: 3rem;}}
+                                @include m-small {&.title {font-size: 3.4rem;}}
+                                @include s-medium {&.title {font-size: 4.2rem;}}
+                                @include m-large {&.title {font-size: 4.8rem;}}
+                                &.subtitle {
+                                    font-size: 1.6rem;
+                                    font-weight: 300;
+                                    margin-bottom: 1rem;
+                                }
+                                @include x-small {&.subtitle {font-size: 2rem;}}
+                                @include m-small {&.subtitle {font-size: 2.4rem;}}
+                                @include s-medium {&.subtitle {font-size: 3rem;}}
+                            }
+                            a {
+                                background-color: transparent;
+                                border: 2px solid $white;
+                                color: $white;
+                                display: inline-block !important;
+                                margin: 1.25rem auto 0;
+                                font-size: 1.4rem;
+                                font-weight: 500;
+                                padding: 1.25rem 3rem;
+                                text-transform: uppercase;
+                                transition: all 0.3s ease;
+                                width: auto !important;
+                            }
+                            a:hover,
+                            a:focus {
+                                background-color: $white;
+                                color: $body-color; 
+                            }
+                            @include s-medium {a {font-size: 1.4rem; }}
+                        }
+                        @include x-small {.content{width: 80%;}}
+                        @include m-small {.content{width: 75%;}}
+                        .background {
+                            height: 100%;
+                            img {
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .bx-controls {
+            position: absolute; bottom: 2.5rem;
+        }
+    }
+}
+
+#header-image {
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    .content {
+        margin: 0 auto;
+        width: 90%;
+        @include v-center;
+        span {
+            color: $white;
+            display: block;
+            text-align: center;
+            text-transform: uppercase;
+            &.title {
+                font-family: $font-title;
+                font-size: 2.4rem;
+                font-weight: 400;
+                line-height: 1.4;
+                margin-bottom: 1rem;
+            }
+            @include x-small {&.title {font-size: 2.6rem;}}
+            @include m-small {&.title {font-size: 3.0rem;}}
+            @include s-medium {&.title {font-size: 3.8rem;}}
+            @include m-large {&.title {font-size: 4.2rem;}}
+            &.subtitle {
+                font-size: 1.6rem;
+                font-weight: 300;
+                margin-bottom: 1rem;
+            }
+            @include x-small {&.subtitle {font-size: 2rem;}}
+            @include m-small {&.subtitle {font-size: 2.2rem;}}
+            @include s-medium {&.subtitle {font-size: 2.6rem;}}
+        }
+    }
+}
+
+
+
+/*------------------------------------*\
+    1. SECTION DEFAULT
+\*------------------------------------*/
+section {
+    padding: 3rem 0;
+    .container {
+        .row {
+        }
+    }
+}
+
+section.container-fluid  {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+@include s-medium {
+    section {
+        padding: 6rem 0;
+            .container {
+                .row {
+                    > div:not(:first-child) {
+                        padding-top: 0rem;
+                    }
+            }
+        }
+    }
+}
+
+/*------------------------------------*\
+    1. CONTENT BLOCK MODULE
+\*------------------------------------*/
+/* module text */
+section.module-text {
+    @include s-medium {.center {text-align: center;}}
+    .btn {
+        text-transform: uppercase;
+    }
+}
+
+
+/* module text-img */
+section.module-text-img {
+    .content {
+        p:last-of-type {margin-bottom: 0;}
+    }
+    .btn {
+        text-transform: uppercase;
+    }
+    .img-left {img {margin-bottom: 2rem;}}
+    .img-right {img {margin-top: 2rem;}}
+}
+
+/* module list */
+section.module-text-list {
+    ul {
+        margin-top: 1rem;
+    }
+}
+
+@include s-medium {
+    section.module-text-list {
+        text-align: center;
+        ul {
+            display: block;
+            margin-top: 2rem;
+            li {
+                display: inline-block;
+                float: left;
+                text-align: left;
+                width: 50%;
+            }
+        }
+        .btn {
+            text-transform: uppercase;
+        }
+    }
+}
+
+/* module citation */
+section.module-citation {
+    background-color: rgb(44,44,44);
+    color: $white;
+    position: relative;
+    text-align: center;
+    font-size: 1.6rem;
+    .title {
+        font-size: 2.8rem;
+        font-weight: 400;
+    }
+    @include m-large {.title {font-size: 3.4rem; font-weight: 300;}}
+    img {
+        position: absolute;
+        top: 0;
+    }
+    p {
+        line-height: 2;
+    }
+    .btn {
+        display: inline-block !important;
+        width: auto !important;
+    }
+}
+@include s-medium {
+    section.module-citation {
+        text-align: left;
+    }
+}
+
+/* portfolio */
+#portfolio {
+    p:last-child {
+        margin-bottom: 3rem;
+    }
+    @include s-medium {p:last-child {margin-bottom: 4rem;}}
+    .item {
+        background-color: $color-imagenow;
+        color: $white;
+        display: flex;         
+        text-align: center;
+        padding: 0;
+        position: relative;
+        &:nth-child(4n+4) {background-color: $color-imagenow;}
+        &:nth-child(4n+3) {background-color: $color-knigge;}
+        &:nth-child(4n+2) {background-color: $color-event;}
+        &:nth-child(4n+1) {background-color: $color-personal;}
+        .content {
+            display: block;
+            width: 100%;
+            a {
+                color: $white;
+                > div {
+                    padding: 1.25rem;
+                    height: 100%;
+                    width: 100%;
+                    position: relative;
+                    @include x-small { > div {margin: 0 auto; width: 75%;}}
+                    > div {
+                        width: 90%;
+                        @include s-medium {@include vh-center;}
+                        &:first-child {
+                            opacity: 1;
+                            transition: opacity 0.3s ease-in-out;
+                            z-index: 100;
+                            &:hover, &:focus {opacity: 0;}
+                        }
+                        .title {
+                            font-size: 2rem;
+                        }
+                        @include s-medium {
+                            .title {font-size: 1.6rem;}
+                        }            
+                        @include m-large {
+                            .title {font-size: 1.8rem;}
+                        }
+                        .description {
+                            margin-bottom: 0;
+                        }
+                        @include s-medium {
+                            .description {font-size: 1.2rem; margin-top: 0;}
+                        }
+                        @include s-medium {
+                            .description {display: none;}
+                        }
+                        @include m-large {
+                            .description {display: inline-block;}
+                        }
+                        @include s-medium {
+                            hr {display: none;}
+                        }
+                        @include m-large {
+                            hr {display: block;}
+                        }
+                        i {
+                            display: block;
+                            font-size: 2.4rem;
+                            margin-top: 1.4rem;
+                        }
+                    }
+                    .overlay {
+                        position: absolute;
+                        @include vh-center;
+                        opacity: 0;
+                        transition: opacity 0.2s ease-in-out;
+                        transition-delay: 0.3s;
+                        z-index: 10;
+                        span {
+                            border: 2px solid $white;
+                            display: inline-block;   
+                            padding: 0.5rem 1.5rem;
+                        }
+                    }
+                    &:hover .overlay, &:focus .overlay {opacity: 1;}
+                }
+            }
+            @include s-medium {
+                a {
+                    color: $white;
+                    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+                }
+            }
+        }
+        @include s-medium {
+            .content {
+                position: relative;
+                width: 50%;
+            }
+        }
+        .image {
+            display: none;
+        }
+        @include s-medium {
+            .image {
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+                display: inline-block;
+                padding: 0;
+                position: relative;
+            }
+        }
+        
+    }
+    @include s-medium {.item {height: 188px;}}
+    @include m-large {.item {height: 242px;}}
+    @include large {.item {height: 250px;}}
+}
+@include s-medium {#portfolio {text-align: center;}}
+
+/* section styles */
+.style-two {
+    background-color: $grey-one;
+}
+.style-three {  
+    background-color: $color-imagenow;
+    color: $white;
+}
+
+/*------------------------------------*\
+    NEWS CENTER FRONTPAGE
+\*------------------------------------*/
+#news-center {
+    .whyus {
+        img {
+            margin: 1rem 0;
+        }
+    }
+    .seminare {
+        h2 {
+            margin-top : 2.5rem;
+        }
+        @include s-medium {h2 {margin-top: 0;}}
+        .seminar {
+            margin-bottom: 3rem;
+            .information {
+                .title, .date {
+                    display: block;
+                    font-weight: 500;
+                }
+                .title {
+                    font-weight: 600;
+                }
+                p {margin: 0.75rem 0;}
+                @include s-medium {
+                    p, .date {
+                    font-size: 1.3rem;
+                    }}
+                .btn {
+                    margin-top: 0.5rem;
+                }
+                @include s-medium {
+                    .btn {
+                        border: 0;
+                        margin-top: 0.5rem;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*------------------------------------*\
+    1. PORTFOLIO OVERVIEW
+\*------------------------------------*/
+#portfolio-overview {
+    padding: 0;
+    .intro {
+        background-color: $color-imagenow;
+        color: rgb(255,255,255);
+        padding: 3rem 0;
+        text-align: center;
+    }
+    @include s-medium {.intro {padding: 6rem 0 260px;}}
+    .overview {
+        background-color: $grey-one;
+            .wrapper {  
+                position: relative; 
+                .item {
+                    display: flex;
+                    margin: 2rem 0;
+                    a {
+                        background: $white;
+                        color: $body-color;
+                        flex: 1;
+                        transition: backgound 0.3s ease-in-out;
+                        > div {
+                            height: 100%;
+                            .image {
+                                height: 200px;
+                                opacity: 1.0;
+                                position: relative;
+                                transition: opacity 0.3s ease-in-out;
+                                width: 100%;
+                            }
+                            @include x-small {.image {height: 240px;}}
+                            @include m-small {.image {height: 280px;}}
+                            @include s-medium {.image {height: 200px;}}
+                            .content {
+                                opacity: 1.0;
+                                padding: 2rem 2.5rem;
+                                text-align: center;
+                                transition: opacity 0.3s ease-in-out;
+                                @include x-small {p {width: 80%; margin: 0 auto;}}
+                                @include m-small {p {width: 60%; margin: 0 auto;}}
+                                @include s-medium {p {width: 100%; margin: 0 auto;}}
+                                .title {font-size: 2.8rem;}
+                                @include s-medium {.title {font-size: 2.2rem;}}
+                            }
+                            @include s-medium {.content {padding: 2rem 2rem;}}
+                            @include m-large {.content {padding: 2rem 1.5rem;}}
+                            @include large {.content {padding: 2rem 2.5rem;}}
+                        }
+                        &:hover, &:focus {
+                            background-color: $color-knigge;
+                            .image {opacity: 0;}
+                            .content {opacity: 0;}
+                        } 
+                        .overlay {
+                            color: rgb(255,255,255);
+                            font-size: 1.8rem;
+                            position: absolute;
+                            @include vh-center;
+                            opacity: 0;
+                            transition: opacity 0.2s ease-in-out;
+                            transition-delay: 0.3s;
+                            z-index: 10;
+                            span {
+                                border: 2px solid $white;
+                                display: inline-block;   
+                                padding: 0.5rem 1.5rem;
+                            }
+                        }
+                        &:hover .overlay, &:focus .overlay {opacity: 1;}
+                        }
+                }
+                @include m-small {.item {margin: 3rem 4rem;}}
+                @include s-medium {.item {margin: 2rem 0rem;}}
+            }
+            @include s-medium {.wrapper {top: -237px; margin-bottom: -200px;}}
+    }
+}
+
+/*------------------------------------*\
+    1. SINGLE PORTFOLIO 
+\*------------------------------------*/
+.single-portfolio {
+    .maincontent {
+        img {margin: 1.5rem 0;}
+        .optional {
+            h3 {
+                margin-top: 2rem;
+            }
+        }
+        @include s-medium {.optional, .inhalt {margin-top: 3rem;}}
+        @include m-large {.optional, .inhalt {margin-top: 6rem;}}
+        @include m-large {.nutzen {text-align: center;}}
+    }
+    .halfimage {
+        .image {
+            display: none;
+            .background {
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+                position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            }
+        }
+        @include s-medium {.image {display: block;}}
+        .content {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+    }
+    @include s-medium {.intro {text-align: center;}}
+}
+
+@include s-medium {
+    .single-portfolio {
+        .halfimage {
+            display: flex;
+            .image {
+                flex: 1;
+                float: none;
+                padding: 0;
+                .background {
+                }
+            }
+            .content {
+                flex: 1;
+                float: none;
+                padding: 6rem 0;
+                .content-wrapper {
+                    margin: 0 auto; 
+                    width: 75%;
+                }
+            }
+        }
+        .fulltext {
+            ul {
+                li {
+                    display: inline-block;
+                    float: left;
+                    text-align: left;
+                    width: 50%;
+                }
+            }
+        }
+        @incldue md-large {text-align: center;}
+    }
+}
+
+@include x-large {
+    .single-portfolio {
+        .intro {
+        }
+        .halfimage {
+            .image {
+                .background {
+                }
+            }
+            .content {
+                .content-wrapper {
+                    margin: 0 auto; 
+                    width: 60%;
+                    .content-inner {
+                        max-width: 360px;
+                        &.left {
+                            float: right;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@include xx-large {
+    .single-portfolio {
+        .intro {
+        }
+        .halfimage{
+            .image {
+                .background {
+                }
+            }
+            .content {
+                .content-wrapper {
+                    margin: 0 auto; 
+                    width: 80%;
+                }
+            }
+        }
+    }
+}
+
+/*------------------------------------*\
+    FOOTER
+\*------------------------------------*/
+footer {
+    h3 {
+        margin-bottom: 3.5rem;
+    }
+    .contact-wrapper {
+        background-image: url(../img/background-footer.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: $white;
+        padding: 3rem 0;
+        .title {
+        }
+        .contact {
+            margin-bottom: 3.5rem;
+            > div {padding: 0;}
+            .address, 
+            .telephone, 
+            .email {
+                display: flex;
+                font-size: 1.4rem;
+                margin-bottom: 1.6rem;
+                padding: 0;
+                > div {
+                    display: flex;
+                    position: relative;
+                }
+                > div:first-child {padding-left: 0;}
+                > div:last-child {padding-right: 0;}
+                .icon {
+                    width: 5rem;
+                    .icon-wrapper {
+                        position: absolute;
+                        @include v-center;
+                        .icon-border {
+                            border: 1px solid #fff;
+                            border-radius: 50%;
+                            position: relative;
+                            width: 3.5rem;
+                            height: 3.5rem;
+                            i {
+                                font-size: 2.4rem;
+                                position: absolute;
+                                @include vh-center;
+                            }
+                        }
+                        @include x-small {
+                            .icon-border {
+                                width: 5rem;
+                                height: 5rem;
+                            }
+                        }
+                    }
+                }
+                @include x-small {
+                    .icon {
+                        width: 6.5rem;
+                    }
+                }
+                @include m-small {
+                    .icon {
+                    }
+                }
+                span {
+                    display: block;
+                    &:only-child {
+                        padding: 1rem 0;
+                    }
+                }
+            }                
+        }
+        #contact-form {
+            form {
+                > div {
+                    padding: 0;
+                }
+                @include m-large {
+                    > div {
+                        padding-left: 15px;
+                        padding-right: 15px;
+                    }
+                }
+                
+            }
+        }
+    }
+    .social-wrapper {
+        padding: 1rem 0;
+        color: rgb(120,120,120);
+        p {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        font-size: 1.1rem;
+        .copyright {
+            display: none;
+        }
+        @include s-medium {
+            .copyright {
+                float: left;
+                display: inline-block;
+                padding: 0.75rem;
+            }
+        }
+        .social {
+            font-size: 1.8rem;
+            text-align: center;
+            @include s-medium {float: right;}
+            a {
+                color: rgb(120,120,120);
+                padding: 0 0.5rem;
+                &:hover {
+                    color: $color-imagenow;
+                }
+            }
+        }
+    }
+}
+
+@include s-medium {
+    footer {
+        .title {
+            text-align: center;
+        }
+        .contact-wrapper {
+            padding: 4rem 0;
+        }
+    }
+}
+
+/*------------------------------------*\
+    TYPOGRAFIE & IMAGES
+\*------------------------------------*/
+@include headings {
+    font-family: $font-title;
+    font-weight: 400;   
+    line-height: 1.5;
+    &:first-child {
+        margin-top: 0;
+    }
+}
+
+h1 {font-size: 3.2rem;}
+h2 {font-size: 2.6rem;}
+h3 {font-size: 2.2rem;}
+h4 {font-size: 2.0rem;}
+h5 {font-size: 1.8rem;}
+@include s-medium {
+    h1 {font-size: 3.5rem; margin-bottom: 2rem;}
+    h2 {font-size: 2.8rem; margin-bottom: 1.75rem;}
+    h3 {font-size: 2.8rem; margin-bottom: 1.5rem;}
+    h4 {font-size: 2.8rem; margin-bottom: 1.5rem;}
+    h5 {font-size: 2.8rem; margin-bottom: 1.5rem;}
+}
+
+p {
+    margin: 1.5rem 0;
+    &:last-child {margin-bottom: 0;}
+}
+
+/* lists */
+ul {
+    list-style: none;
+    padding:0;
+    margin:0;
+}
+
+main {
+    ul {
+        li {
+        padding-left: 1em; 
+        text-indent: -.7em;
+        &:before {
+            content: "• ";
+            color: $color-imagenow;
+            }
+        }
+    }
+}
+
+
+/* links */
+a {
+    color: $color-imagenow;
+    text-decoration: none; 
+    &:hover {
+        color: $body-color;
+        text-decoration: none;
+    }
+}
+
+.btn {
+    background-color: $color-imagenow;
+    border-radius: 0;
+    border: 2px solid $color-imagenow;
+    color: $white;
+    display: inline-block;
+    margin-top: 2.5rem;
+    padding: 0.75rem 2rem;
+    transition: all 0.3s ease 0s;
+    transform: scale(1,1);
+    width: auto;
+    &:hover, 
+    &:focus{
+        background-color: $white;
+        color: $color-imagenow;
+    }
+    &.negative {
+        background-color: transparent;
+        color: $color-imagenow;
+        &:hover {
+            background-color: $color-imagenow; 
+            color: $white;
+        }
+    }
+}
+
+@include m-large {div.btn-sm {display: none;}}
+
+.btn-md {display: none;}
+@include m-large {.btn-md {display: inline-block;}}
+
+/* images */
+img {max-width: 100%;}
+
+/*------------------------------------*\
+    1. FORM
+\*------------------------------------*/
+label {font-weight: normal;}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+textarea {
+    border: 1px solid rgb(237,237,237);
+    color: $body-color;
+    height: 4rem;
+    margin: 0 auto 1rem;
+    padding: 1.5rem;
+    width: 100%;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="tel"]:focus,
+textarea:focus {
+    border:1px solid rgb(236,28,95);
+    box-shadow: none;
+    outline: none !important;
+}
+
+form input[type="submit"] {
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-align: center;
+    width: 100%;
+    @include s-medium {
+        float: right;
+        width: auto;
+    }    
+}
+
+textarea {
+    height: 100px;
+}
+
+/*------------------------------------*\
+    1. HELPERS
+\*------------------------------------*/
+
+/* line */
+hr.small {
+    border-color: $white;
+    max-width: 100px;
+    margin: 10px auto 15px;
+    border-width: 2px;
+}
+
+/* clearfix / clear children */
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* equal height bootstrap rows */
+.row-eq-height {
+    display: flex;
+    flex-wrap: wrap;
+}
